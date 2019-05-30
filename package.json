@@ -1,0 +1,44 @@
+{
+  "name": "app-bin",
+  "version": "1.0.0",
+  "description": "Few handy applications are combined together to help in day to day work",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./build/webpack/config.dev.js --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himansusekhar7/app-bin.git"
+  },
+  "keywords": [
+    "Note",
+    "currency-converter"
+  ],
+  "author": "Himansu Sekhar Boity",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/himansusekhar7/app-bin/issues"
+  },
+  "homepage": "https://github.com/himansusekhar7/app-bin#readme",
+  "dependencies": {
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1",
+    "webpack": "^4.32.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^2.0.2",
+    "eslint": "^5.16.0",
+    "html-webpack-plugin": "^3.2.0",
+    "prop-types": "^15.7.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  }
+}
