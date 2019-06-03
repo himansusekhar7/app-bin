@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-
+import AppQuickNote from './components/QuickNote';
 class App extends Component {
 
   render() {
     return (
-      <div><strong>Himansu Sekhar Boity</strong></div>
+      <div>
+        <AppQuickNote />
+      </div>
     );
   }
 }
