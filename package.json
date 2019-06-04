@@ -4,7 +4,7 @@
   "description": "Few handy applications are combined together to help in day to day work",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./build/webpack/config.dev.js --open",
+    "start": "webpack-dev-server --require @babel/register --config ./build/webpack/config.dev.babel.js --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/himansusekhar7/app-bin#readme",
   "dependencies": {
-    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
@@ -30,15 +29,22 @@
     "webpack": "^4.32.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.4",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^2.0.2",
+    "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
     "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"
   }

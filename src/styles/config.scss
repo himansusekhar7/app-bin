@@ -1,0 +1,19 @@
+$base-font-size: 18px;
+$text-color-1: rgba(12, 20, 60, 1);
+$text-color-2: rgb(166, 85, 241);
+$text-color-3: rgb(255, 232, 28);
+$text-color-4: rgb(155, 156, 161);
+$text-color-5: rgba(240, 240, 240, 1);
+
+$bg-color-1: rgba(255, 255, 255, 1);
+$bg-color-2: rgba(240, 240, 240, 1);
+$bg-color-3: rgba(200, 200, 200, 1);
+
+//
+%ruler-bottom {
+  border-bottom: 1px solid $bg-color-3;
+}
+
+%ruler-right {
+  border-right: 1px solid $bg-color-3;
+}

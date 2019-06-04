@@ -5,12 +5,11 @@
  * @version 1.0.0
  */
 
-const path = require('path');
+import path from 'path';
 
 // plugins
 const cleanWebpackPlugin = require('clean-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-
 
 const configuration = {
   mode: process.env.mode || 'development',
@@ -21,7 +20,8 @@ const configuration = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist'
+    historyApiFallback: true,
+    contentBase: './'
   },
   plugins:[ new cleanWebpackPlugin(), new htmlWebpackPlugin({
     template: './src/templates/index.html'
@@ -30,7 +30,11 @@ const configuration = {
     rules: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
       },
       {
         test: /\.js$/,
@@ -38,6 +42,12 @@ const configuration = {
         use: ['babel-loader']
       }
     ]
+  },
+  resolve: {
+    alias: {
+      components: '../src/components',
+    },
+    extensions: ['.js', '.json', '.scss']
   }
 };
 

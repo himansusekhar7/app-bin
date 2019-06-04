@@ -1,0 +1,46 @@
+@import '../styles/config';
+
+.quick-notes {
+  &-wrapper {
+    @extend %ruler-bottom;
+    background-color: $bg-color-2;
+  }
+
+  &_list {
+    ul{ 
+      @extend %ruler-right;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      @extend %ruler-bottom;
+      list-style: none;
+      padding: 10px 0;
+      &:last-child {
+        border-bottom-width: 0;
+      }
+    }
+  }
+  &_details_panel {
+    textarea {
+      background: transparent;
+      height: 1px;
+      width: 0px;
+      border: none;
+      resize: none;
+      position: absolute;
+      right: 0;
+      &:focus {
+        outline: none;
+      }
+    }
+    pre {
+      display: inline;
+      .show-ruler {
+        @extend %ruler-bottom;
+        display: inline-block;
+      }
+    }
+  }
+}
