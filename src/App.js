@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AppQuickNote from './components/QuickNote';
+import AppQuickNote from './components/containers/QuickNote';
 import './styles/style';
 class App extends Component {
 

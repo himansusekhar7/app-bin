@@ -20,7 +20,7 @@ const quickNotes = (state = initialState, action) => {
     case 'REMOVE_NOTE':
       return state.quick_notes.filter(note => note.id !== action.id);
     default:
-      return state;
+      return state.quick_notes;
   }
 };
 

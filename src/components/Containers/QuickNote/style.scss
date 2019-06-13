@@ -1,4 +1,4 @@
-@import '../styles/config';
+@import '../../../styles/config';
 
 .quick-notes {
   &-wrapper {
@@ -24,16 +24,8 @@
   }
   &_details_panel {
     textarea {
-      background: transparent;
-      height: 1px;
-      width: 0px;
-      border: none;
       resize: none;
-      position: absolute;
-      right: 0;
-      &:focus {
-        outline: none;
-      }
+      border-radius: 0;
     }
     pre {
       display: inline;
