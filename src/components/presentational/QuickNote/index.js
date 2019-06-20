@@ -7,22 +7,35 @@ class QuickNote extends Component {
     super(props);
 
     this.state = {
-      isEditing: true,
+      isEditing: false,
       unsavedContent: false,
-      currentNoteId: 0,
-
+      currentNote: {}
     };
   }
 
   componentDidMount(){
     const { notes } = this.props;
     if (notes && notes.length) {
-      const currentNoteId = notes[0].id;
-      this.setState({ currentNoteId });
+      this._filterNoteData();
     }
   };
   
-  
+  _filterNoteData = (noteId = 0) => {
+    const { notes } = this.props;
+    const { currentNote } = this.state;
+    const requestedNoteId = parseInt(noteId, 10);
+    const filteredNote = requestedNoteId > 0 ? notes && notes.filter( note => note.id === requestedNoteId )[0] 
+                        : (Object.entries(currentNote).length === 0 && currentNote.constructor === Object) 
+                        ? notes[0] : currentNote;
+    if (filteredNote) {
+      const currentFilteredNote = {
+        noteContent: filteredNote.content || '',
+        title: filteredNote.content && filteredNote.content.substring(0, 20)
+      }
+      this.setState({ currentNote: currentFilteredNote });
+    }
+  };
+
   _displayQuickNotesColumn = () => {
     const { notes } = this.props;
     const noteList = notes.map((note, index) => {
@@ -43,18 +56,8 @@ class QuickNote extends Component {
   _selectNote = (event) => {
     const target = event.target;
     const noteId = target.getAttribute('data-note-id');
-    return this._filterNoteData(noteId);
+    this._filterNoteData(noteId);
   }
-
-  _filterNoteData = (noteId = 0) => {
-    const { notes } = this.props;
-    const { currentNoteId } = this.state;
-    const filteredNote = noteId > 0 ? notes && notes.filter( note => note.id === noteId ) : currentNote;
-    return filteredNote && {
-      noteContent: filteredNote && filteredNote.content || '',
-      title: filteredNote && filteredNote.content && filteredNote.content.substring(0, 20)
-    }
-  };
 
   _saveNote = (event) => {
     // this.setState({ paraText, curPos: this._textArea.selectionEnd });
@@ -76,14 +79,17 @@ class QuickNote extends Component {
     const { isEditing, unsavedContent } = this.state;
     const paraInlineStyle = isEditing ? 'none' : 'block';
     const editorInlineStyle = !isEditing ? 'none' : 'block';
-    const { noteContent, title } = this._filterNoteData();
+    const { noteContent, title } = this.state.currentNote;
 
     return(
       <div className="col-8 quick-notes_details_panel">
         <h1>{title}</h1>
-        <p style={{display: paraInlineStyle}}>
-          { noteContent && <pre dangerouslySetInnerHTML={{__html: noteContent}}/> }
-        </p>
+        <div style={{display: paraInlineStyle}}>
+          <button className="btn btn-outline-primary btn-sm">
+            <span className="material-icons">edit</span>
+          </button>
+          { noteContent && <p dangerouslySetInnerHTML={{__html: noteContent}}/> }
+        </div>
         <form className="note-editor-panel" style={{display: editorInlineStyle}}>
           <div className="form-group">
             <textarea
